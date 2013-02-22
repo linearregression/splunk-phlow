@@ -32,6 +32,7 @@ http://en.wikipedia.org/wiki/NetFlow
 
 The index we created:
 
+
 [INDEX = netflow_si_traffic] 
 
 The source type
