@@ -3,6 +3,8 @@ splunk-flowy-flowy
 
 This is a Splunk configuration for consuming flow data.
 
+[[images/netflow.gif]]
+
 ### Design Review
 
 "splunk flowy flowy" is an amalgamation of 
@@ -30,9 +32,16 @@ We also used the field references here
 http://www.ietf.org/rfc/rfc3954.txt
 http://en.wikipedia.org/wiki/NetFlow
 
+We rely on nfcapd to get data into binary and off the stack.
+
+http://nfdump.sourceforge.net
+
 We rely on inotify to get data out of binary nfcapd into ascii format
 
 http://linuxaria.com/article/introduction-inotify?lang=en
+
+
+
 
 
 
