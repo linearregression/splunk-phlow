@@ -1,10 +1,9 @@
 splunk-flowy-flowy
 ==================
 
-This is a Splunk configuration for consuming flow data using nfcapd, inotify, ascii-conversion, universal forwarder, and splunk views
+This is a Splunk configuration for consuming flow data.
 
-
-## Design Review
+### Design Review
 
 "splunk flowy flowy" is an amalgamation of 
 - NFCAPD 
@@ -14,7 +13,7 @@ This is a Splunk configuration for consuming flow data using nfcapd, inotify, as
 ### Contributors
 
 @jcwx - John Weir - INOC
-@rupack89 - RupaFunction1
+@rupack89 - Rupak Pandya Function1
 @sometheycallme (Tim) - International Securities Exchange
 
 ### references
@@ -26,23 +25,29 @@ http://www.cisco.com/en/US/technologies/tk648/tk362/technologies_white_paper0918
 We also used the field acronyms in this 
 
 
-### splunk configuration for splunk-flowy-flowy
+### splunk configuration details for splunk-flowy-flowy
 
-[INDEX = netflow_si_traffic] to be created.
+The index we created:
+
+[INDEX = netflow_si_traffic] 
+
+The source type
 
 [SOURCETYPE = netflow]
 
-Data resides on [IC-SPK03 == /var/log/nfdump-ascii]
+Data resides on [Splunk Forwarder Host == /var/log/nfdump-ascii]
 
 The files are written every minute.
 
 Requirements:
 
-- Take the ASCII converted files.  Get them into splunk, with index and source type above.  This can be accomplished with the serverclass.conf  and new deployment-app called ''ise-netfow''.  the app would be responsible for telling the universal forwarder to splunk data located in the ASCII folder listed in  3) below.    
+- Take the ASCII converted files.  
+- Get them into splunk, with index and source type above.  
+- This can be accomplished with the serverclass.conf  and new deployment-app called ''<your-company-name>-netfow''. 
+- The app would be responsible for telling the universal forwarder to splunk data located in the ASCII folder listed in item 3) below.    
+- Then - we can use the field extractions and field aliases to populate dashboards for splunk-flowy-flowy
 
-- Then - we can use the field extractions to make a version of this netflow-integrator app from splunk base that works for ISE.
-
-Sounds simple - but really is a bit of work for us.  LETS GO!
+Sounds simple - but is a bit of legwork.
 
 ### how the data gets massaged for indexing
 
@@ -102,6 +107,7 @@ on_exit
 ```
 
 ###  ascii nfdump script would need to be modified to run as a service (init script needed)
+
 <i> WE can probably run this as part of the pre-processing init script (which we don't quite have yet) </i>
 
 ```
@@ -119,11 +125,11 @@ example:
 PWD 
 /var/log/nfdump-ascii
 
-[root@ic-spk03 nfdump-ascii]#
+[root@yourhost nfdump-ascii]#
 
 .....
   nfdump-ascii.2013-02-22.11:17:00.log
 
 
 
-3) inotify triggers the 
+
