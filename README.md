@@ -1,4 +1,4 @@
-## Got flowy flowy?  ;>
+## Got flowy flowy  ;>
 
 
 ![ScreenShot](https://raw.github.com/sometheycallme/splunk-flowy-flowy/master/assets/flowy.png)
