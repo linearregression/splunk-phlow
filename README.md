@@ -49,6 +49,37 @@ Requirements:
 
 Sounds simple - but is a bit of legwork.
 
+Props.conf
+
+```
+[netflow]
+# For the new nfdump output format that includes router_ip
+EXTRACT-flow = \d{4}-\d{2}-\d{2}\s\d{1,2}:\d{1,2}:\d{1,2}\.\d{1,3}\s+(?<duration>\d+\.\d+)\s+(?<protocol>\w+)\s+(?<src_ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(?<src_port>\d{1,5})\s+->\s+(?<dest_ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(?<dest_port>\d{1,5})\s+(?<tcp_flag>[\w\.]+)\s+(?<tos>\d+)\s+(?<packets>\d+)\s+(?<bytes>\d+)\s+(?<pps>\d+)\s+(?<bps>\d+)\s+(?<bpp>\d+)\s+(?<flow_count>\d+)\s+(?<exp_ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})
+ 
+SHOULD_LINEMERGE = false
+FIELDALIAS-proto = protocol AS proto
+FIELDALIAS-srcip = src_ip AS srcip
+FIELDALIAS-srcport = src_port AS srcport
+FIELDALIAS-dstip = dest_ip AS dstip
+FIELDALIAS-dst_ip = dest_ip AS dst_ip
+FIELDALIAS-dstport = dest_port AS dstport
+FIELDALIAS-dst_port = dest_port AS dst_port
+FIELDALIAS-flags = tcp_flag AS flags
+FIELDALIAS-num_packets = packets AS num_packets
+FIELDALIAS-num_bytes = bytes AS num_bytes
+FIELDALIAS-num_flows = flow_count AS num_flows
+FIELDALIAS-router_ip = exp_ip AS router_ip
+```
+ 
+# For the nfdump output format: extended
+#EXTRACT-flow = \d{4}-\d{2}-\d{2}\s\d{1,2}:\d{1,2}:\d{1,2}\.\d{1,3}\s+(?<duration>\d+\.\d+)\s+(?<proto>\w+)\s+(?<srcip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(?<srcport>\d{1,5})\s+->\s+(?<dstip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(?<dstport>\d{1,5})\s+(?<flags>[\w\.]+)\s+(?<tos>\d+)\s+(?<num_packets>\d+)\s+(?<num_bytes>\d+)\s+(?<pps>\d+)\s+(?<bps>\d+)\s+(?<bpp>\d+)\s+(?<num_flows>\d+)
+# For the (default) output format: line
+# EXTRACT-flow = \d{4}-\d{2}-\d{2}\s\d{1,2}:\d{1,2}:\d{1,2}\.\d{1,3}\s+(?<duration>\d+\.\d+)\s+(?<proto>\w+)\s+(?<srcip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(?<srcport>\d{1,5})\s+->\s+(?<dstip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(?<dstport>\d{1,5})\s+(?<num_packets>\d+)\s+(?<num_bytes>\d+)\s+(?<num_flows>\d+)
+ 
+lookup_proto = protocol_lookup protocol
+lookup_srcport = port_lookup port AS src_port OUTPUT service AS src_service
+lookup_dstport = port_lookup port AS dest_port OUTPUT service AS dest_service
+
 ### how the data gets massaged for indexing
 
 Summary:
