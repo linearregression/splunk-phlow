@@ -1,7 +1,7 @@
 ## Got flowy flowy?  ;>
 
 
-[ScreenShot](https://raw.github.com/)
+[ScreenShot](https://raw.github.com/sometheycallme/splunk-flowy-flowy/blob/master/assets/flowy.png)
 
 splunk-flowy-flowy
 ==================
