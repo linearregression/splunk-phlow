@@ -19,11 +19,11 @@ This is a Splunk configuration for consuming netflow v5,7,9 data.
 
 ### Contributors
 
-@jcwx - [John Weir](https://github.com/jcwx) 
+[@jcwx John Weir](https://github.com/jcwx) 
 
-@rupack89 - [Rupak Pandya](https://github.com/Rupak98) 
+[@rupack89 - Rupak Pandya](https://github.com/Rupak98) 
 
-@sometheycallme - [Tim](https://github.com/sometheycallme) International Securities Exchange
+[@sometheycallme - Tim Kropp](https://github.com/sometheycallme) 
 
 
 ### references / mashup
