@@ -1,0 +1,93 @@
+<view template="dashboard.html">
+    <label>Protocol</label>
+    <module name="AccountBar" layoutPanel="appHeader"/>
+    <module name="AppBar" layoutPanel="navigationHeader"/>
+    <module name="Message" layoutPanel="messaging">
+        <param name="filter">*</param>
+        <param name="level">error</param>
+        <param name="clearOnJobDispatch">True</param>
+        <param name="maxSize">1</param>
+    </module>
+    <module name="TitleBar" layoutPanel="navigationHeader">
+        <param name="actionsMenuFilter">dashboard</param>
+    </module>
+
+    <module name="StaticContentSample" layoutPanel="panel_row1_col1">
+        <param name="text">Pick the time range for the dashboard.</param>
+    </module>
+
+    <module name="TimeRangePicker" layoutPanel="panel_row1_col1" autoRun="true">
+        <param name="default">Last 24 hours</param>
+        <param name="searchWhenChanged">true</param>
+
+        <module name="HiddenSearch" autoRun="true">
+            <param name="search">`traffic_summary`</param>
+
+            <!-- Traffic by Protocol -->
+            <module name="HiddenPostProcess" group="Traffic by Protocol" layoutPanel="panel_row2_col1">
+                <param name="search">
+                    eval bytes = `formatbytestom(bytes)` | timechart sum(bytes) by protocol_name | fields - OTHER
+                </param>
+                <module name="JobProgressIndicator" />
+                <module name="HiddenChartFormatter">
+                    <param name="chart">area</param>
+                    <param name="chart.stackMode">stacked</param>
+                    <param name="chart.nullValueMode">zero</param>
+                    <param name="primaryAxisTitle.text">Time</param>
+                    <param name="secondaryAxisTitle.text">MB</param>
+                    <module name="FlashChart">
+                        <module name="ConvertToIntention">
+                            <param name="intention">
+                                <param name="name">stringreplace</param>
+                        		<param name="arg">
+                          			<param name="protocol_name"><param name="value">$click.name2$</param></param>
+                        		</param>
+                        		<param name="flags"><list>indexed</list></param>
+                            </param> 
+                            <module name="HiddenSearch" autoRun="true">
+                                <param name="search">
+                                    `netflow` protocol_name="$protocol_name$" | `conversation`
+                                </param>
+                                <module name="ViewRedirector">
+                                    <param name="viewTarget">flashtimeline</param>
+                                    <param name="popup">True</param>
+                                </module>
+          				    </module>
+                     </module>
+                </module>
+                </module>
+            </module>
+
+            <module name="HiddenPostProcess" layoutPanel="panel_row2_col1">
+                <param name="search">
+                    stats sum(bytes) AS Traffic by protocol protocol_name | sort - Traffic | eval Traffic = `formatbytes(Traffic)`
+                </param>
+                <module name="Paginator">
+                    <param name="entityName">results</param>
+                    <module name="SimpleResultsTable">
+                        <param name="drilldown">row</param>
+                        <module name="ConvertToIntention">
+                            <param name="intention">
+                                <param name="name">stringreplace</param>
+                                <param name="arg">
+                                    <param name="protocol"><param name="value">$click.value$</param></param>
+                                </param>
+                                <param name="flags"><list>indexed</list></param>
+                            </param> 
+                            <module name="HiddenSearch" autoRun="true">
+                                <param name="search">
+                                    `netflow` protocol="$protocol$" | `conversation`
+                                </param>
+                                <module name="ViewRedirector">
+                                    <param name="viewTarget">flashtimeline</param>
+                                    <param name="popup">True</param>
+                                </module>
+                            </module>
+                        </module>
+                    </module>
+                </module>
+            </module>
+
+        </module> <!-- end HiddenSearch -->
+    </module> <!-- end TimeRangePicker -->
+</view>

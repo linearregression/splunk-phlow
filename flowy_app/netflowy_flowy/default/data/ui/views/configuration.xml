@@ -1,0 +1,18 @@
+﻿<view template="dashboard.html">
+  <label>NetFlow Integrator Server Configuration</label>
+  <module name="AccountBar" layoutPanel="appHeader"/>
+  <module name="AppBar" layoutPanel="navigationHeader"/>
+  <module name="Message" layoutPanel="messaging">
+    <param name="filter">*</param>
+    <param name="clearOnJobDispatch">False</param>
+    <param name="maxSize">1</param>
+  </module>
+  <module name="TitleBar" layoutPanel="navigationHeader">
+    <param name="showActionsMenu">False</param>
+  </module>
+
+  <module name="ServerSideInclude" layoutPanel="panel_row1_col1">
+    <param name="src">configuration.html</param>
+  </module>
+
+</view>

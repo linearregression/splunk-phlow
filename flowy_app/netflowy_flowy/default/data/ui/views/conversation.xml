@@ -1,0 +1,70 @@
+<view template="dashboard.html">
+    <label>Conversation</label>
+    <module name="AccountBar" layoutPanel="appHeader"/>
+    <module name="AppBar" layoutPanel="navigationHeader"/>
+    <module name="Message" layoutPanel="messaging">
+        <param name="filter">*</param>
+        <param name="level">error</param>
+        <param name="clearOnJobDispatch">True</param>
+        <param name="maxSize">1</param>
+    </module>
+    <module name="TitleBar" layoutPanel="navigationHeader">
+        <param name="actionsMenuFilter">dashboard</param>
+    </module>
+
+    <module name="StaticContentSample" layoutPanel="panel_row1_col1">
+        <param name="text">Pick the time range for the dashboard.</param>
+    </module>
+
+    <module name="TimeRangePicker" layoutPanel="panel_row1_col1" autoRun="true">
+        <param name="default">Last 24 hours</param>
+        <param name="searchWhenChanged">true</param>
+        
+        <module name="HiddenSearch" group="Traffic Conversations" layoutPanel="panel_row2_col1" autoRun="true">
+            <param name="search">
+                `traffic_summary` | `conversation`
+            </param>
+
+            <module name="ResultsHeader" layoutPanel="panel_row1_col1">
+                <param name="entityLabel">events</param>
+                <param name="entityName">events</param>
+                <module name="FlashTimeline">
+                    <param name="height">100px</param>
+                    <param name="width">100%</param>
+                </module>
+            </module>
+            
+            <module name="JobProgressIndicator" />
+            <module name="Paginator">
+                <param name="entityName">results</param>
+                <param name="count">20</param>
+                <module name="SimpleResultsTable">
+                    <param name="entityName">results</param>
+                    <param name="drilldown">all</param>
+                    <module name="ConvertToIntention">
+                        <param name="intention">
+                            <param name="name">addterm</param>
+                            <param name="arg">
+                                <param name="$click.name2$">$click.value2$</param>
+                            </param>
+                        </param> 
+                        <module name="HiddenSearch" autoRun="true">
+                            <param name="search">
+                                `netflow` | `conversation`
+                            </param>
+                            <module name="ViewRedirector">
+                                <param name="viewTarget">flashtimeline</param>
+                                <param name="popup">True</param>
+                        	</module>
+                        </module>
+                    </module>
+                </module>
+                <!-- Bottom Paginator -->
+                <module name="Paginator">
+                    <param name="entityName">results</param>
+                </module>
+            </module>
+            
+        </module> <!-- end HiddenSearch -->
+    </module> <!-- end TimeRangePicker -->
+</view>

@@ -1,0 +1,29 @@
+<nav>
+    <collection label="NetFlowy-Flowy for Splunk">
+        <collection label="Searches &amp; Reports">
+            <collection label="Reports">
+                <saved source="unclassified" match="report" />
+            </collection>
+            <divider />
+            <saved source="unclassified" />
+        </collection>
+        
+		
+        
+    </collection>
+    
+    <collection label="Dashboards">
+        <view name="overview" default="true" />
+        <view name="overall_stat" />
+    </collection>
+    
+    <view name="protocol" />
+    <view name="source" />
+    <view name="destination" />
+    <view name="conversation" />
+    
+    <collection label="Search">
+        <view name="search_by_ip" />
+        <a href="/app/netflow/flashtimeline?q=search%20`netflow`">Timeline</a>
+    </collection>
+</nav>
