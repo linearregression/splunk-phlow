@@ -3,7 +3,6 @@ splunk-flowy-flowy
 
 This is a Splunk configuration for consuming flow data.
 
-[[images/flow.gif|width=250px|height=250|align=left]]
 
 ### Design Review
 
