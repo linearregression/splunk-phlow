@@ -72,7 +72,7 @@ FIELDALIAS-num_packets = packets AS num_packets
 FIELDALIAS-num_bytes = bytes AS num_bytes
 FIELDALIAS-num_flows = flow_count AS num_flows
 FIELDALIAS-router_ip = exp_ip AS router_ip
-```
+
  
 # For the nfdump output format: extended
 #EXTRACT-flow = \d{4}-\d{2}-\d{2}\s\d{1,2}:\d{1,2}:\d{1,2}\.\d{1,3}\s+(?<duration>\d+\.\d+)\s+(?<proto>\w+)\s+(?<srcip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(?<srcport>\d{1,5})\s+->\s+(?<dstip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}):(?<dstport>\d{1,5})\s+(?<flags>[\w\.]+)\s+(?<tos>\d+)\s+(?<num_packets>\d+)\s+(?<num_bytes>\d+)\s+(?<pps>\d+)\s+(?<bps>\d+)\s+(?<bpp>\d+)\s+(?<num_flows>\d+)
@@ -84,6 +84,7 @@ lookup_srcport = port_lookup port AS src_port OUTPUT service AS src_service
 lookup_dstport = port_lookup port AS dest_port OUTPUT service AS dest_service
 
 ### how the data gets massaged for indexing
+```
 
 Summary:
 1) nfcap is running as a service - in order to get the data off of the stack and into the /var/log/nfcap directory
