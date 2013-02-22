@@ -1,4 +1,4 @@
-## Got flowy flowy  ;>
+## Got flowy flowy?   |;>|
 
 <img src="https://raw.github.com/sometheycallme/splunk-flowy-flowy/master/assets/flowy.png" width="250" height="250" />
 
