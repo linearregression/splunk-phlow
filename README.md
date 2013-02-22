@@ -21,7 +21,7 @@ This is a Splunk configuration for consuming netflow v5,7,9 data.
 
 [@jcwx John Weir](https://github.com/jcwx) 
 
-[@rupack89 - Rupak Pandya](https://github.com/Rupak98) 
+[@rupak98 - Rupak Pandya](https://github.com/Rupak98) 
 
 [@sometheycallme - Tim Kropp](https://github.com/sometheycallme) 
 
