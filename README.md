@@ -22,7 +22,10 @@ This cisco whitepaper on the relevant fields for extracting data from flows was 
 
 http://www.cisco.com/en/US/technologies/tk648/tk362/technologies_white_paper09186a00800a3db9.html
 
-We also used the field acronyms in this 
+We also used the field references 
+
+http://www.ietf.org/rfc/rfc3954.txt
+http://en.wikipedia.org/wiki/NetFlow
 
 
 ### splunk configuration details for splunk-flowy-flowy
