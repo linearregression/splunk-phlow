@@ -1,6 +1,6 @@
 ## Got phlow? 
 
-<img src="https://raw.github.com/phlowy/splunk-phlow/master/assets/flow.png" width="250" height="250" />
+<img src="https://raw.github.com/phlowy/splunk-phlow/master/phlow-assets/flow.png" width="250" height="250" />
 
 
 splunk-phlow
@@ -8,7 +8,7 @@ splunk-phlow
 
 This is an application for consuming netflow v5,7,9 data using NFDUMP, iNotify, Binary-ASCII coverter, and Splunk!
 
-<img src="https://raw.github.com/phlowy/splunk-phlow/master/assets/phlowdash.png" width="750" height="400" />
+<img src="https://raw.github.com/phlowy/splunk-phlow/master/phlow-assets/phlowdash.png" width="750" height="400" />
 
 
 ### Overview
