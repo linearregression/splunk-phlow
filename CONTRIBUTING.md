@@ -27,12 +27,12 @@ a branch of your fork.
 
     # update your production branch
     git checkout production
-    git rebase upstream/production
+    git rebase upstream/splunk-flowy-flowy
     git push # push to origin, but NEVER force-push production
 
     # update your topic branch(es)
     git checkout <branch-name>
-    git rebase upstream/production
+    git rebase upstream/splunk-flowy-flowy
     git push -f # force-push to origin since you rewrote history (i.e., changed hashes)
     ```
 
@@ -42,23 +42,11 @@ a branch of your fork.
 
    b. Force push: `git push` or `git push -f` (for amended commits)
 
-   c. You should receive an email from no-reply@ise.com
-      (see *Autostager*, below) within 60 seconds of pushing
-
-   d. Test on a telx host by copy-pasting the commands from the email
-
-      See the document, `TESTING.md`, in this directory.
-      It contains instructions for smoke test, host impersonation,
-      rspec, and the helpful files you can use to validate your code.
-      It also contains a list of custom facter facts that you can
-      use for your puppet manifests.
-
-   e. If your branch is not perfect, go back to step 4a
 
 5. Prepare your branch for merge
 
    a. When you believe your branch is ready for merging into the
-      production branch, add a **Signed-off-by** signature:
+      splunk-flowy-flowy master branch, add a **Signed-off-by** signature:
 
     ```
     git commit --amend -s
