@@ -26,13 +26,13 @@ a branch of your fork.
     git fetch --prune upstream
 
     # update your production branch
-    git checkout splunk-flowy-flowy
-    git rebase upstream/splunk-flowy-flowy
-    git push # push to origin, but NEVER force-push splunk-flowy-flowy
+    git checkout splunk-phlow
+    git rebase upstream/splunk-phlow
+    git push # !! push to origin, but NEVER force-push upstream/splunk-phlow
 
     # update your topic branch(es)
     git checkout <branch-name>
-    git rebase upstream/splunk-flowy-flowy
+    git rebase upstream/splunk-phlow
     git push -f # force-push to origin since you rewrote history (i.e., changed hashes)
     ```
 
@@ -46,7 +46,7 @@ a branch of your fork.
 5. Prepare your branch for merge
 
    a. When you believe your branch is ready for merging into the
-      splunk-flowy-flowy master branch, add a **Signed-off-by** signature:
+      splunk-phlow master branch, add a **Signed-off-by** signature:
 
     ```
     git commit --amend -s
