@@ -13,7 +13,7 @@ This is an application for consuming netflow v5,7,9 data using NFDUMP, iNotify, 
 ### Overview
 
 "splunk flowy flowy" is an amalgamation of 
-- NFCAPD 
+- NFDUMP
 - iNotify 
 - nfcapd-ascii bash script
 - logrotate
@@ -43,7 +43,7 @@ We also used the field references here
 http://www.ietf.org/rfc/rfc3954.txt
 http://en.wikipedia.org/wiki/NetFlow
 
-We rely on nfcapd to get data into binary and off the stack.
+We rely on NFDUMP to get data into binary and off the stack.
 
 http://nfdump.sourceforge.net
 
