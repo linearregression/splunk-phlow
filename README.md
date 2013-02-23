@@ -1,12 +1,11 @@
-## Got flowy flowy  ;>
-
+## Got flowy flowy?   
 <img src="https://raw.github.com/sometheycallme/splunk-flowy-flowy/master/assets/flowy.png" width="250" height="250" />
 
 
 splunk-flowy-flowy
 ==================
 
-This is a Splunk configuration for consuming netflow v5,7,9 data.
+This is an application for consuming netflow v5,7,9 data using NFDUMP, iNotify, Binary-ASCII coverter, and Splunk!
 
 
 ### Overview
