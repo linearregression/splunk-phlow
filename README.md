@@ -32,6 +32,12 @@ This is an application for consuming netflow v5,7,9 data using NFDUMP, iNotify, 
 
 [@sometheycallme - Tim Kropp](https://github.com/sometheycallme) 
 
+[@sorandom - Sandeep Khaneja](https://github.com/sorandom) 
+
+[@jumanjiman - Paul Morgan](https://github.com/jumanjiman) 
+
+[@vpalacio - Victor Palacio](https://github.com/vpalacio) 
+
 
 ### references / mashup
 
