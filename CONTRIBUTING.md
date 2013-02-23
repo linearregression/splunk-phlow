@@ -52,12 +52,4 @@ a branch of your fork.
     git commit --amend -s
     ```
 
-   b. Add a comment to your pull request, saying that
-      you've signed off on the branch and request approval for it.
-      Make sure you mention **@iseoptions/puppet-committers** to get
-      our attention.
-
-6. After your branch is merged (or whenever upstream/production is updated),
-   it's time to do some repo maintenance. See *Git housecleaning*, below.
-
 
