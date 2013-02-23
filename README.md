@@ -1,5 +1,5 @@
 ## Got flowy flowy?   
-<img src="https://raw.github.com/sometheycallme/splunk-flowy-flowy/master/assets/flowy.png" width="250" height="250" />
+<img src="https://raw.github.com/flowy-flowy/splunk-flowy-flowy/master/assets/flowy.png" width="250" height="250" />
 
 
 splunk-flowy-flowy
