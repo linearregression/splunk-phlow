@@ -3,7 +3,7 @@
   <label>Netflowy Overview</label>
   <row>
     <chart>
-      <searchString>`netflow`| eval bytes = `formatbytestom(bytes)` | timechart limit=10 sum(bytes) by src_ip | fields - OTHER</searchString>
+      <searchString>`netflow` earliest=-4h | eval bytes = `formatbytestom(bytes)` | timechart limit=10 sum(bytes) by src_ip | fields - OTHER</searchString>
       <title>Top 10 Source IP</title>
       <option name="charting.axisTitleY.text">MB</option>
       <option name="charting.chart">area</option>
@@ -11,10 +11,8 @@
       <option name="count">10</option>
       <option name="displayRowNumbers">true</option>
     </chart>
-  </row>
-  <row>
     <chart>
-      <searchString>`netflow`| eval bytes = `formatbytestom(bytes)` | timechart limit=10 sum(bytes) by dest_ip | fields - OTHER</searchString>
+      <searchString>`netflow` earliest=-4h | eval bytes = `formatbytestom(bytes)` | timechart limit=10 sum(bytes) by dest_ip | fields - OTHER</searchString>
       <title>Top 10 Dest IP</title>
       <option name="charting.axisTitleY.text">MB</option>
       <option name="charting.chart">area</option>
@@ -25,7 +23,7 @@
   </row>
   <row>
     <chart>
-      <searchString>`netflow`| stats sum(bytes) AS TotalBytes by src_port protocol_name _time                         | eval TotalBytes = `formatbytestom(TotalBytes)`                         | strcat src_port "/" protocol_name protocol                         | timechart limit=10 sum(TotalBytes) AS TotalBytes by protocol                         | fields - OTHER</searchString>
+      <searchString>`netflow` earliest=-4h | stats sum(bytes) AS TotalBytes by src_port protocol_name _time                         | eval TotalBytes = `formatbytestom(TotalBytes)`                         | strcat src_port "/" protocol_name protocol                         | timechart limit=10 sum(TotalBytes) AS TotalBytes by protocol                         | fields - OTHER</searchString>
       <title>Top 10 Source Ports</title>
       <option name="charting.axisTitleY.text">MB</option>
       <option name="charting.chart">area</option>
@@ -33,10 +31,8 @@
       <option name="count">10</option>
       <option name="displayRowNumbers">true</option>
     </chart>
-  </row>
-  <row>
     <chart>
-      <searchString>`netflow`| stats sum(bytes) AS TotalBytes by dest_port protocol_name _time                         | eval TotalBytes = `formatbytestom(TotalBytes)`                         | strcat dest_port "/" protocol_name protocol                         | timechart limit=10 sum(TotalBytes) AS TotalBytes by protocol                         | fields - OTHER</searchString>
+      <searchString>`netflow` earliest=-4h  | stats sum(bytes) AS TotalBytes by dest_port protocol_name _time                         | eval TotalBytes = `formatbytestom(TotalBytes)`                         | strcat dest_port "/" protocol_name protocol                         | timechart limit=10 sum(TotalBytes) AS TotalBytes by protocol                         | fields - OTHER</searchString>
       <title>Top 10 Dest Ports</title>
       <option name="charting.axisTitleY.text">MB</option>
       <option name="charting.chart">area</option>
@@ -47,7 +43,7 @@
   </row>
   <row>
     <chart>
-      <searchString>`netflow` | eval bytes = `formatbytestom(bytes)` | timechart limit=10 sum(bytes) by protocol_name | fields - OTHER</searchString>
+      <searchString>`netflow` earliest=-4h | eval bytes = `formatbytestom(bytes)` | timechart limit=10 sum(bytes) by protocol_name | fields - OTHER</searchString>
       <title>Top 10 Protocol</title>
       <option name="charting.axisTitleY.text">MB</option>
       <option name="charting.chart">area</option>
