@@ -1,0 +1,24 @@
+In our design we use the Splunk Deployment Server to manage the apps that reside on both the INDEXER and the Universal forwarder
+
+In the root of the phlow-app folder we have two applications.
+
+These are deployment-apps.   One is for the indexer 'splunk-phlow' the other is for the universal forwarder 'splunk-phlow-inputs'
+
+
+# ALL INDEXERS
+[serverClass:all_indexer]
+whitelist.0 = <indexer name> 
+whitelist.1 = <indexer name> 
+[serverClass:all_indexer:app:splunk_phlow]
+blacklist.0 = <SERVER = things you don't want on indexer or non-indexers>
+
+################ Universal Forwarder only
+
+### SPLUNK-PHLOW 
+[serverClass:splunk-phlow]
+whitelist.0 = <universal forwarder name>
+restartSplunkd = true
+[serverClass:syslog:app:splunk_phlow_inputs]
+
+
+

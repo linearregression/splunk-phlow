@@ -1,5 +1,5 @@
 <nav>
     <collection label="Main">
-        <view name="netflowy_overview" default="true" />
+        <view name="flowy_overview" default="true" />
     </collection>
 </nav>
