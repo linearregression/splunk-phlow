@@ -26,9 +26,9 @@ a branch of your fork.
     git fetch --prune upstream
 
     # update your production branch
-    git checkout production
+    git checkout splunk-flowy-flowy
     git rebase upstream/splunk-flowy-flowy
-    git push # push to origin, but NEVER force-push production
+    git push # push to origin, but NEVER force-push splunk-flowy-flowy
 
     # update your topic branch(es)
     git checkout <branch-name>
