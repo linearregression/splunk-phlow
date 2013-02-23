@@ -5,7 +5,7 @@
 splunk-flowy-flowy
 ==================
 
-This is a Splunk configuration for consuming netflow v5,7,9 data.
+This is an application for consuming netflow v5,7,9 data using NFDUMP, iNotify, Binary-ASCII coverter, and Splunk!
 
 
 ### Overview
