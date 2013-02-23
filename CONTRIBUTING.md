@@ -11,6 +11,23 @@ a branch of your fork.
       default = tracking
     ```
 
+
+2. In the repo folder - add the remote origin
+   
+    ```
+    git remote -v
+    git remote add upstream git@github.com:phlowy/splunk-phlow.git
+    ```
+   
+   looks something like this
+   
+    ```
+    origin    git@github.com:sometheycallme/splunk-phlow.git (fetch)
+    origin	git@github.com:sometheycallme/splunk-phlow.git (push)
+    upstream	git@github.com:phlowy/splunk-phlow.git (fetch)
+    upstream	git@github.com:phlowy/splunk-phlow.git (push)
+    ```
+  
 2. Set up a remote tracking branch and pull request
 
    a. `git checkout -b <branch_name>`
