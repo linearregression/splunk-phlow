@@ -1,8 +1,9 @@
-## Got flowy flowy?   
+## Got phlow? 
+
 <img src="https://raw.github.com/phlowy/splunk-phlow/master/assets/flowy.png" width="250" height="250" />
 
 
-splunk-flowy-flowy
+splunk-phlow
 ==================
 
 This is an application for consuming netflow v5,7,9 data using NFDUMP, iNotify, Binary-ASCII coverter, and Splunk!
