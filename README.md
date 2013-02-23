@@ -1,5 +1,5 @@
 ## Got flowy flowy?   
-<img src="https://raw.github.com/flowy-flowy/splunk-flowy-flowy/master/assets/flowy.png" width="250" height="250" />
+<img src="https://raw.github.com/phlowy/splunk-flowy-flowy/master/assets/flowy.png" width="250" height="250" />
 
 
 splunk-flowy-flowy
@@ -7,7 +7,7 @@ splunk-flowy-flowy
 
 This is an application for consuming netflow v5,7,9 data using NFDUMP, iNotify, Binary-ASCII coverter, and Splunk!
 
-<img src="https://raw.github.com/flowy-flowy/splunk-flowy-flowy/master/assets/flowydash.png" width="750" height="400" />
+<img src="https://raw.github.com/phlowy/splunk-flowy-flowy/master/assets/flowydash.png" width="750" height="400" />
 
 
 ### Overview
