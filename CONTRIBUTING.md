@@ -25,14 +25,16 @@ a branch of your fork.
     # retrieve upstream changes
     git fetch --prune upstream
 
-    # update your production branch
-    git checkout splunk-phlow
-    git rebase upstream/splunk-phlow
+    # Checkout master branch in your fork
+    git checkout master
+    
+    # rebase with the upstream master branch
+    git rebase upstream/master
     git push # !! push to origin, but NEVER force-push upstream/splunk-phlow
 
     # update your topic branch(es)
     git checkout <branch-name>
-    git rebase upstream/splunk-phlow
+    git rebase upstream/master
     git push -f # force-push to origin since you rewrote history (i.e., changed hashes)
     ```
 
