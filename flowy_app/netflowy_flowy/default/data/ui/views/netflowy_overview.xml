@@ -1,5 +1,5 @@
 <view template="dashboard.html">
-    <label>Overall Statistics</label>
+    <label>Netflowy Overview</label>
     <module name="AccountBar" layoutPanel="appHeader"/>
     <module name="AppBar" layoutPanel="navigationHeader"/>
     <module name="Message" layoutPanel="messaging">
@@ -21,7 +21,7 @@
         <param name="searchWhenChanged">true</param>
         
         <module name="HiddenSearch" layoutPanel="panel_row1_col1" autoRun="true">
-            <param name="search">`traffic_summary`</param>
+            <param name="search">`netflow`</param>
         
             <!-- Traffic Volume -->
             <module name="HiddenPostProcess" group="Traffic Volume" layoutPanel="panel_row2_col1">
