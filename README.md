@@ -7,7 +7,7 @@ splunk-flowy-flowy
 
 This is an application for consuming netflow v5,7,9 data using NFDUMP, iNotify, Binary-ASCII coverter, and Splunk!
 
-<img src="https://raw.github.com/flowy-flowy/splunk-flowy-flowy/master/assets/flowydash.png" width="750" height="700" />
+<img src="https://raw.github.com/flowy-flowy/splunk-flowy-flowy/master/assets/flowydash.png" width="750" height="500" />
 
 
 ### Overview
