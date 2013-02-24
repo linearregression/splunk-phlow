@@ -1,5 +1,5 @@
 <nav>
     <collection label="Main">
-        <view name="flowy_overview" default="true" />
+        <view name="phlow_overview" default="true" />
     </collection>
 </nav>
