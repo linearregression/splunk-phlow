@@ -22,7 +22,7 @@ This is an application for consuming netflow v5,7,9 data using NFDUMP, iNotify, 
 - cron (to handle scheduling)
 - init scripts (to handle service starting)
 - puppet (out of scope - but to get this built/rebuilt/rebuilt/......rebuilt and stable)
-- custom Splunk app: splunk-flowy-flowy :)
+- custom Splunk app: Splunk Phlow
 
 ### Contributors
 
