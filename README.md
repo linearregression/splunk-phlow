@@ -13,7 +13,7 @@ This is an application for consuming netflow v5,7,9 data using NFDUMP, iNotify, 
 
 ### Overview
 
-"splunk flowy flowy" is an amalgamation of 
+Splunk Phlow is an amalgamation of 
 - NFDUMP
 - iNotify 
 - nfcapd-ascii bash script
