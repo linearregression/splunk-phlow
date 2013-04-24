@@ -1,3 +1,12 @@
+
+Luckily for anyone that wants to try the netflow perl script I created a
+record of what I did to install the few sql scripts and set up the users.
+
+It's something of a 'paint by numbers' approach, but as they say, a picture
+is worth a thousand words.  
+
+********************************
+
 [root@ankou nfcapd]# su - postgres
 -bash-4.1$ psql -d template1 -U postgres
 psql (8.4.13)
