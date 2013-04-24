@@ -1,0 +1,82 @@
+[root@ankou nfcapd]# su - postgres
+-bash-4.1$ psql -d template1 -U postgres
+psql (8.4.13)
+Type "help" for help.
+
+template1=# CREATE USER netflow WITH PASSWORD '956nfz*9';
+CREATE ROLE
+template1=# CREATE USER ntop WITH PASSWORD 'nfz956*9';
+CREATE ROLE
+template1=# CREATE DATABASE ntop OWNER ntop;
+CREATE DATABASE
+
+**********************
+
+[root@ankou ~]# su - ntop
+[ntop@ankou ~]$ psql -d ntop -U ntop
+psql (8.4.13)
+Type "help" for help.
+
+ntop=> \i /home/ntop/ntop_flows.sql
+CREATE TABLE
+ntop=> \d
+       List of relations
+ Schema | Name  | Type  | Owner 
+--------+-------+-------+-------
+ public | flows | table | ntop
+(1 row)
+
+ntop=> \d flows
+                                   Table "public.flows"
+  Column   |          Type          |                      Modifiers            
+          
+-----------+------------------------+-------------------------------------------
+----------
+ ipsrc     | character(15)          | not null default ''::bpchar
+ ipdst     | character(15)          | not null default ''::bpchar
+ pktsent   | integer                | not null default 0
+ bytessent | integer                | not null default 0
+ starttime | time without time zone | not null default '00:00:00'::time
+without 
+time zone
+ endtime   | time without time zone | not null default '00:00:00'::time
+without 
+time zone
+ srcport   | integer                | not null default 0
+ dstport   | integer                | not null default 0
+ tcpflags  | smallint               | not null default 0::smallint
+ proto     | smallint               | not null default 0::smallint
+ tos       | smallint               | not null default 0::smallint
+
+ntop=>
+ntop=> grant create, connect on database ntop to netflow;
+GRANT
+ntop=> grant select, update, insert on table flows to netflow;
+GRANT
+
+
+# edit pg_hba.conf:
+# IPv4 local connections:
+#host    all         all         127.0.0.1/32          ident
+host    all         all         127.0.0.1/32          md5 
+
+# needed to allow function to be created
+ntop=> CREATE LANGUAGE plpgsql;
+CREATE LANGUAGE
+ntop=> \i /tmp/function_add_cmt.sql
+CREATE FUNCTION
+ntop=> select * from flows;
+      ipsrc      |      ipdst      | pktsent | bytessent | starttime | endtime  
+| srcport | dstport | tcpflags | proto | tos 
+-----------------+-----------------+---------+-----------+-----------+----------
++---------+---------+----------+-------+-----
+ 108.161.188.213 | 68.190.127.88   |      11 |     10169 | 13:31:55  |
+13:32:04 
+|      80 |   58146 |       31 |     6 |   0
+ 108.161.188.213 | 68.190.127.88   |      42 |     54641 | 13:31:55  |
+13:32:04 
+|      80 |   58145 |       31 |     6 |   0
+ 72.21.91.121    | 68.190.127.88   |       8 |      4467 | 13:31:56  |
+13:32:04 
+|      80 |   38582 |       31 |     6 |   0
+
