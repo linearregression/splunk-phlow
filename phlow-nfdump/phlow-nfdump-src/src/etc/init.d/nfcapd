@@ -26,10 +26,6 @@
 DAEMON=nfcapd
 LOCK_FILE="/var/lock/subsys/$DAEMON"
 RETVAL=0
-
-DAEMON1=nfdump-ascii
-LOCK_FILE1="/var/lock/subsys/$DAEMON1"
-RETVAL1=0
   
 status_nfcapd () {
 	if pidof $DAEMON > /dev/null 2>&1; then
@@ -37,14 +33,6 @@ status_nfcapd () {
 	else
 	  return 1
 	fi
-}
-
-status_nfdump-ascii() {
-	if pidof $DAEMON1 > /dev/null 2>&1; then
-                return 0
-        else
-          return 1
-        fi
 }
 
 do_start() {
@@ -60,19 +48,6 @@ do_start() {
 	echo
 	[ $RETVAL -eq 0 ] && touch $LOCK_FILE
 	return $RETVAL
-
-	status_nfdump-ascii
-        if [ $? -eq 0 ]; then
-                echo "$DAEMON1 already started..."
-                return 1
-        fi
-
-        echo -n $"Starting $DAEMON1: "
-        daemon /usr/bin/nfdump-ascii.sh
-        RETVAL1=$?
-        echo
-        [ $RETVAL1 -eq 0 ] && touch $LOCK_FILE1
-        return $RETVAL1
 }
 
 do_stop() {
@@ -82,13 +57,6 @@ do_stop() {
     [ $RETVAL -eq 0 ] && rm -f $LOCK_FILE
     echo
     return $RETVAL
-
-    echo -n $"Stopping $DAEMON1: "
-    killproc $DAEMON1
-    RETVAL1=$?
-    [ $RETVAL1 -eq 0 ] && rm -f $LOCK_FILE1
-    echo
-    return $RETVAL1
 }
                 
 # See how we were called.
