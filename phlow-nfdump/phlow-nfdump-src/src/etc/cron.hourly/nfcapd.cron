@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/usr/bin/nfexpire -e /var/log/nfcapd -t 6d

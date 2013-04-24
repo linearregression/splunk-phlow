@@ -1,0 +1,6 @@
+/var/log/nfdump-ascii/* {
+	daily
+	nocreate
+	rotate 0
+	sharedscripts
+}

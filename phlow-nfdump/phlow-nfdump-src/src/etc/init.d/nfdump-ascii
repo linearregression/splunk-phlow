@@ -1,0 +1,104 @@
+#!/bin/sh
+# 
+#set -x
+### BEGIN INIT INFO
+# Provides:          nfdump-ascii
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: nfdump netflow binary to ascii log converter
+# Description: 	     nfdump netflow binary to ascii log converter
+# chkconfig: 345 99 01
+# processname: nfdump-ascii
+# File: nfdump-ascii.sh
+### END INIT INFO
+
+#
+# Author : John Weir
+# 
+
+# Source function library.
+. /etc/init.d/functions
+
+DAEMON=nfdump-ascii.sh
+EXEC=/usr/bin/nfdump-ascii.sh
+USER=nfcapd
+LOCK_FILE="/var/lock/subsys/$DAEMON"
+RETVAL=0
+  
+status_nfdumpascii() {
+	if pidofproc $DAEMON > /dev/null 2>&1; then
+                return 0
+        else
+          return 1
+        fi
+}
+
+do_start() {
+	status_nfdumpascii
+	if [ $? -eq 0 ]; then
+		echo "$DAEMON already started..."
+		return 1
+	fi
+	
+	echo -n $"Starting $DAEMON: "
+	{ daemon --user nfcapd /usr/bin/nfdump-ascii.sh & }
+	RETVAL=$?
+	echo
+	[ $RETVAL -eq 0 ] && touch $LOCK_FILE
+	return $RETVAL
+#	exit
+}
+
+do_stop() {
+	echo -n $"Stopping $DAEMON: "
+#	/usr/bin/pkill nfdump-ascii.sh
+	killproc nfdump-ascii.sh
+#	echo $?
+	RETVAL=$?
+	[ $RETVAL -eq 0 ] && rm -f $LOCK_FILE
+	echo
+	return $RETVAL
+	exit $?
+}
+                
+# See how we were called.
+case "$1" in
+	start)
+    do_start
+		;;
+	
+	stop)
+		do_stop
+    ;;
+    
+  status)
+		status $DAEMON
+    ;;
+
+	restart)
+		do_stop
+		do_start
+		;;
+
+	condrestart|try-restart)
+                status_nfdumpascii
+                if [ $? -eq 0 ]; then
+                        do_stop
+                        do_start
+                else
+                        echo "daemon not running..."
+                fi
+                ;;
+
+	*)
+		echo "Usage: $0 {start|stop|restart|status|condrestart|try-restart}"
+		exit 2
+		;;
+
+esac
+  
+exit $RETVAL
+  
+# End of this script
