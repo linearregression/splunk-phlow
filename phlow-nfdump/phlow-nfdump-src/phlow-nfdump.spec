@@ -1,5 +1,5 @@
 Name:			phlow-nfdump
-Version:		0.1
+Version:		0.2
 Release:		1%{?dist}
 Summary:		Netflow processing tools	
 
@@ -118,3 +118,6 @@ if [ $1 -eq 1 ] ; then
 fi
 
 %changelog
+* Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.2-1
+- new package built with tito
+
