@@ -1,5 +1,5 @@
 Name:			phlow-nfdump
-Version:		0.9
+Version:		0.10
 Release:		1%{?dist}
 Summary:		Netflow processing tools	
 
@@ -63,12 +63,14 @@ rm -rf %{buildroot}
 %{__mkdir_p} %{buildroot}/etc/init.d/
 %{__mkdir_p} %{buildroot}/etc/cron.hourly/
 %{__mkdir_p} %{buildroot}/etc/logrotate.d/
+%{__mkdir_p} %{buildroot}/usr/bin/
 %{__install} -pm0644 src/etc/nfcapd.conf %{buildroot}%{_sysconfdir}/nfcapd.conf
 %{__install} -pm0755 src/etc/init.d/nfcapd %{buildroot}%{_sysconfdir}/init.d/nfcapd
 %{__install} -pm0755 src/etc/init.d/nfdump-ascii %{buildroot}%{_sysconfdir}/init.d/nfdump-ascii
 %{__install} -pm0644 src/etc/sysconfig/nfcapd %{buildroot}%{_sysconfdir}/sysconfig/nfcapd
 %{__install} -pm0755 src/etc/cron.hourly/nfcapd.cron %{buildroot}%{_sysconfdir}/cron.hourly/nfcapd.cron
 %{__install} -pm0644 src/etc/logrotate.d/nfdump-ascii %{buildroot}%{_sysconfdir}/logrotate.d/nfdump-ascii
+%{__install} -pm0755 src/usr/bin/nfdump-ascii.sh %{buildroot}%{_prefix}/bin/nfdump-ascii.sh
 make install DESTDIR=%{buildroot}
 
 
@@ -89,6 +91,7 @@ rm -rf %{buildroot}
 %{_sysconfdir}/sysconfig/nfcapd
 %attr(755,root,root) %{_sysconfdir}/cron.hourly/nfcapd.cron
 %{_sysconfdir}/logrotate.d/nfdump-ascii
+%attr(755,root,root) %{_prefix}/bin/nfdump-ascii.sh
 
 %post
 # This adds the proper /etc/rc*.d links for the script
@@ -123,6 +126,9 @@ if [ $1 -eq 1 ] ; then
 fi
 
 %changelog
+* Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.10-1
+- add install of nfdump-ascii.sh
+
 * Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.9-1
 - correct syntax errors in spec file
 
