@@ -1,9 +1,12 @@
-
 Luckily for anyone that wants to try the netflow perl script I created a
-record of what I did to install the few sql scripts and set up the users.
+record of what I did to install the few sql scripts and set up the users
+and database the last time I went through it.
 
 It's something of a 'paint by numbers' approach, but as they say, a picture
 is worth a thousand words.  
+
+I'll try to get some better documentation written, but really -- what you see
+below, short of launching the netflow perl script, is pretty much it.
 
 ********************************
 
