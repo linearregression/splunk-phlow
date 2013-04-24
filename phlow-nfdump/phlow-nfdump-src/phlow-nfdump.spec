@@ -1,5 +1,5 @@
 Name:			phlow-nfdump
-Version:		0.7
+Version:		0.8
 Release:		1%{?dist}
 Summary:		Netflow processing tools	
 
@@ -121,6 +121,9 @@ if [ $1 -eq 1 ] ; then
 fi
 
 %changelog
+* Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.8-1
+- add create /var/log/ directories to spec file
+
 * Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.7-1
 - 
 
