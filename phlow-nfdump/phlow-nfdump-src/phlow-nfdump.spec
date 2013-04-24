@@ -1,5 +1,5 @@
 Name:			phlow-nfdump
-Version:		0.6
+Version:		0.7
 Release:		1%{?dist}
 Summary:		Netflow processing tools	
 
@@ -38,7 +38,9 @@ if [ $1 -eq 1 ] ; then
 	/usr/bin/getent group nfcapd >/dev/null || /usr/sbin/groupadd -r nfcapd
 	/usr/bin/getent passwd nfcapd >/dev/null || \
 	/usr/sbin/useradd -r -g nfcapd -d /home/nfcapd \
-	-s /sbin/nologin -c "used for nfcapd daemon (nfdump)" nfcapd
+	-s /sbin/nologin -c "used for nfcapd daemon (nfdump)" nfcapd || \
+	/bin/mkdir /var/log/nfcapd || \
+	/bin/mkdir /var/log/nfdump-ascii
 exit 0
 fi
 
@@ -119,6 +121,9 @@ if [ $1 -eq 1 ] ; then
 fi
 
 %changelog
+* Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.7-1
+- 
+
 * Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.6-1
 - update & correct syntax issues (jcwx@inoc.com)
 
