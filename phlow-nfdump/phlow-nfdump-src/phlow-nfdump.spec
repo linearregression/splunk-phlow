@@ -1,5 +1,5 @@
 Name:			phlow-nfdump
-Version:		0.11
+Version:		0.12
 Release:		1%{?dist}
 Summary:		Netflow processing tools	
 
@@ -110,10 +110,10 @@ echo " "
 
 %preun
 if [ $1 -eq 0 ] ; then
-	/sbin/service nfcapd stop >/dev/null 2>&1
-	/sbin/chkconfig --del nfcapd
 	/sbin/service nfdump-ascii stop >/dev/null 2>&1
+	/sbin/service nfcapd stop >/dev/null 2>&1
 	/sbin/chkconfig --del nfdump-ascii
+	/sbin/chkconfig --del nfcapd
 	/bin/rm -rf /var/log/nfcapd
 	/bin/rm -rf /var/log/nfdump-ascii
 	/usr/sbin/userdel nfcapd
@@ -126,6 +126,9 @@ if [ $1 -eq 1 ] ; then
 fi
 
 %changelog
+* Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.12-1
+- change order of stopping services for preuninstall
+
 * Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.11-1
 - add README updates
 
