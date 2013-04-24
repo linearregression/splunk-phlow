@@ -1,5 +1,5 @@
 Name:			phlow-nfdump
-Version:		0.3
+Version:		0.4
 Release:		1%{?dist}
 Summary:		Netflow processing tools	
 
@@ -119,6 +119,10 @@ if [ $1 -eq 1 ] ; then
 fi
 
 %changelog
+* Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.4-1
+- add phlow-nfdump comment and description to
+- README file
+
 * Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.3-1
 - correct spec file, add nfdump-ascii init write
 
