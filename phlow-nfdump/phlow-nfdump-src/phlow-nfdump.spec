@@ -1,5 +1,5 @@
 Name:			phlow-nfdump
-Version:		0.2
+Version:		0.3
 Release:		1%{?dist}
 Summary:		Netflow processing tools	
 
@@ -81,6 +81,7 @@ rm -rf %{buildroot}
 %{_mandir}/man1/*
 %{_sysconfdir}/nfcapd.conf
 %attr(755,root,root) %{_sysconfdir}/init.d/nfcapd
+%attr(755,root,root) %{_sysconfdir}/init.d/nfdump-ascii
 %{_sysconfdir}/sysconfig/nfcapd
 %attr(755,root,root) %{_sysconfdir}/cron.hourly/nfcapd.cron
 %{_sysconfdir}/logrotate.d/nfdump-ascii
@@ -118,6 +119,9 @@ if [ $1 -eq 1 ] ; then
 fi
 
 %changelog
+* Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.3-1
+- correct spec file, add nfdump-ascii init write
+
 * Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.2-1
 - new package built with tito
 
