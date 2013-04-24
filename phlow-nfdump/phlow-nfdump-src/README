@@ -1,4 +1,48 @@
 
+The source code included here is taken directly from the nfdump 
+1.6.8p1 release.
+
+We have added functionality to the nfdump package to allow splunk
+to read the data we gather from incoming netflow data
+
+This package can be used with your favorite RPM tool, such as
+rpmbuild, tito or whatever. 
+
+Please refer to the spec file in the code for specifics on how
+the configuration and installation process works.
+
+The only platform this has been tested on is a RHEL 6.3 server.
+
+The default process is as follows:
+
+daemon nfcapd:
+o listens for incoming netflows on port 2055
+o writes binary data to /var/log/nfcapd
+o five minute cycle between writes
+
+daemon nfdump-ascii:
+o uses inotify to monitor /var/log/nfcapd
+o converts nfcapd binaries to flat text files
+o writes to /var/log/nfdump-ascii
+
+Added a logrotate job added for deleting old nfdump-ascii files.
+Added a cron job for deleting old nfcapd files.  I would have
+used logrotate for that as well, but the file names didn't work
+well with logrotate.  Used nfexpire in a cron job instead
+
+There are init scripts for both the nfcapd & nfdump-ascii daemons.
+
+There will probably be some tweaking done to the RPM yet.  When the
+RPM is installed, it starts both the daemons and as long as netflows
+can get to port 2055 (UDP) flows will end up being converted and 
+written to /var/log/nfdump-ascii, where Splunk can then read the 
+files.
+
+Feel free to make suggestions or point out problems.  
+
+The below README content is from the original nfdump 1.6.8p1 release.
+
+********************************************
 Stable Release v1.6.6
 
 See the Changelog file for changes in release 1.6.6

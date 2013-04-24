@@ -1,5 +1,5 @@
 Name:			phlow-nfdump
-Version:		0.10
+Version:		0.11
 Release:		1%{?dist}
 Summary:		Netflow processing tools	
 
@@ -126,6 +126,9 @@ if [ $1 -eq 1 ] ; then
 fi
 
 %changelog
+* Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.11-1
+- add README updates
+
 * Wed Apr 24 2013 jcwx <jcwx@inoc.com> 0.10-1
 - add install of nfdump-ascii.sh
 
