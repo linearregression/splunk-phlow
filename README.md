@@ -60,4 +60,4 @@ http://linuxaria.com/article/introduction-inotify?lang=en
 
 ### Our Wiki
 
-https://github.com/sometheycallme/splunk-flowy-flowy/wiki
+https://github.com/phlowy/splunk-phlow/wiki
